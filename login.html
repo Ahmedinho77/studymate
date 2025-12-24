@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - StudyMate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Bebas+Neue&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="login.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logoText">Study<span class="mate">Mate</span></span>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="study-tools.html"><i class="fas fa-tools"></i> Study Tools</a></li>
+                <li><a href="flashcards.html"><i class="fas fa-layer-group"></i> Flashcards</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+                <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+                <button class="nav-btn"><a href="signUp.html"><i class="fas fa-user-plus"></i> Sign Up</a></button>
+            </ul>
+        </div>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="login-hero">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-header">
+                    <h1>Welcome Back!</h1>
+                    <p>Log in to continue your learning journey with StudyMate</p>
+                </div>
+
+                <div class="login-form-container">
+                    <div class="form-header">
+                        <h2>Log In to Your Account</h2>
+                        <p>Enter your credentials to access your dashboard</p>
+                    </div>
+
+                    <form class="login-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password"><i class="fas fa-lock"></i> Password</label>
+                            <div class="password-input">
+                                <input type="password" id="password" name="password" placeholder="Enter your password"
+                                    required>
+                                <button type="button" class="toggle-password" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <i class="fas fa-sign-in-alt"></i> Log In
+                        </button>
+
+                        <div class="divider">
+                            <span>or log in with</span>
+                        </div>
+
+                        <div class="social-login">
+                            <button type="button" class="social-btn google">
+                                <i class="fab fa-google"></i> Google
+                            </button>
+                            <button type="button" class="social-btn facebook">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </button>
+                            <button type="button" class="social-btn apple">
+                                <i class="fab fa-apple"></i> Apple
+                            </button>
+                        </div>
+
+                        <div class="signup-link">
+                            Don't have an account? <a href="signUp.html">Sign up here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="login-features">
+                <div class="features-header">
+                    <h2>What Awaits You</h2>
+                    <p>Access your personalized learning experience</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Continue Your Progress</h3>
+                        <p>Pick up right where you left off with your personalized study plan</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Access Your Flashcards</h3>
+                        <p>Review all your saved flashcards and continue your spaced repetition</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Rejoin Study Groups</h3>
+                        <p>Connect with your study groups and continue collaborative learning</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Track Achievements</h3>
+                        <p>View your learning streaks, badges, and progress milestones</p>
+                    </div>
+                </div>
+
+                <div class="quick-stats">
+                    <div class="stat">
+                        <h3>50,000+</h3>
+                        <p>Active Learners</p>
+                    </div>
+                    <div class="stat">
+                        <h3>96%</h3>
+                        <p>Report Better Grades</p>
+                    </div>
+                    <div class="stat">
+                        <h3>24/7</h3>
+                        <p>Access Anywhere</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="login-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Continue Learning?</h2>
+                <p>Log in to access all your study materials and continue your journey to academic success</p>
+                <div class="cta-buttons">
+                    <a href="signUp.html" class="cta-btn primary">Create Free Account</a>
+                    <a href="index.html" class="cta-btn secondary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo footer-logo">
+                    <span class="logoText">Study<span class="mate">Mate</span></span>
+                </div>
+                <p>Making learning efficient, effective, and accessible for every student worldwide.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/14RPMbnhgGu/" class="facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@AhmedAli-k7b" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/ahmeyali.9/" class="instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/ahmed-ali-883129359" class="linkedin"><i
+                            class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="study-tools.html"><i class="fas fa-chevron-right"></i> Study Tools</a></li>
+                    <li><a href="flashcards.html"><i class="fas fa-chevron-right"></i> Flashcards</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chevron-right"></i> Progress</a></li>
+                    <li><a href="community.html"><i class="fas fa-chevron-right"></i> Community</a></li>
+                    <li><a href="resources.html"><i class="fas fa-chevron-right"></i> Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Account</h3>
+                <ul>
+                    <li><a href="signUp.html"><i class="fas fa-chevron-right"></i> Sign Up</a></li>
+                    <li><a href="login.html" class="active"><i class="fas fa-chevron-right"></i> Log In</a></li>
+                    <li><a href="forgotpassword.html"><i class="fas fa-chevron-right"></i> Forgot Password</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> support@studymate.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StudyMate. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a
+                    href="terms-of-service.html">Terms of Service</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>

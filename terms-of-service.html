@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - StudyMate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resources.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Bebas+Neue&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="termsofservice.js"></script>
+ 
+    <style>
+        /* Terms of Service Specific Styles */
+        .terms-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 5%;
+        }
+
+        .terms-section {
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #00b894;
+        }
+
+        .terms-section h2 {
+            color: #2d3436;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .terms-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #00b894, #fd79a8);
+            border-radius: 2px;
+        }
+
+        .terms-section h3 {
+            color: #2d3436;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .terms-section p {
+            color: #636e72;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .terms-section ul,
+        .terms-section ol {
+            margin: 1rem 0 1rem 2rem;
+            color: #636e72;
+        }
+
+        .terms-section li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .terms-section li strong {
+            color: #2d3436;
+        }
+
+        .important-note {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .important-note h3 {
+            color: #856404;
+            margin-bottom: 1rem;
+        }
+
+        .important-note p {
+            color: #856404;
+        }
+
+        .acceptance-box {
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .acceptance-box h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .acceptance-box p {
+            color: white;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .accept-btn {
+            background: white;
+            color: #6c5ce7;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .accept-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .last-updated {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 2rem 0;
+            font-weight: 600;
+            color: #6c5ce7;
+            border: 2px dashed #6c5ce7;
+        }
+
+        .toc-list {
+            margin: 2rem 0;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .toc-list h4 {
+            margin-bottom: 1rem;
+            color: #2d3436;
+        }
+
+        .toc-list ul {
+            columns: 2;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc-list a {
+            color: #00b894;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toc-list a:hover {
+            text-decoration: underline;
+        }
+
+        .toc-list i {
+            font-size: 0.8rem;
+        }
+
+        .prohibited-list {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .prohibited-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .prohibited-list li:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .toc-list ul {
+                columns: 1;
+            }
+
+            .terms-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logoText">Study<span class="mate">Mate</span></span>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="study-tools.html"><i class="fas fa-tools"></i> Study Tools</a></li>
+                <li><a href="flashcards.html"><i class="fas fa-layer-group"></i> Flashcards</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+                <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+                <button class="nav-btn"><a href="signUp.html"><i class="fas fa-user-plus"></i> Sign Up</a></button>
+            </ul>
+        </div>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="header-content">
+            <h1>Terms of Service</h1>
+            <p>Please read these terms carefully before using StudyMate's services.</p>
+        </div>
+    </section>
+
+    <section class="terms-content">
+        <div class="last-updated">
+            <i class="fas fa-calendar-alt"></i> Last Updated: March 15, 2025 | Effective Date: March 15, 2025
+        </div>
+
+        <div class="toc-list">
+            <h4>Table of Contents</h4>
+            <ul>
+                <li><a href="#agreement"><i class="fas fa-chevron-right"></i> 1. Agreement to Terms</a></li>
+                <li><a href="#eligibility"><i class="fas fa-chevron-right"></i> 2. Eligibility</a></li>
+                <li><a href="#account"><i class="fas fa-chevron-right"></i> 3. Account Registration</a></li>
+                <li><a href="#services"><i class="fas fa-chevron-right"></i> 4. Services Description</a></li>
+                <li><a href="#subscriptions"><i class="fas fa-chevron-right"></i> 5. Subscriptions & Payments</a></li>
+                <li><a href="#user-content"><i class="fas fa-chevron-right"></i> 6. User Content</a></li>
+                <li><a href="#prohibited"><i class="fas fa-chevron-right"></i> 7. Prohibited Activities</a></li>
+                <li><a href="#intellectual"><i class="fas fa-chevron-right"></i> 8. Intellectual Property</a></li>
+                <li><a href="#termination"><i class="fas fa-chevron-right"></i> 9. Termination</a></li>
+                <li><a href="#disclaimer"><i class="fas fa-chevron-right"></i> 10. Disclaimer</a></li>
+                <li><a href="#limitation"><i class="fas fa-chevron-right"></i> 11. Limitation of Liability</a></li>
+                <li><a href="#governing"><i class="fas fa-chevron-right"></i> 12. Governing Law</a></li>
+                <li><a href="#changes"><i class="fas fa-chevron-right"></i> 13. Changes to Terms</a></li>
+                <li><a href="#contact"><i class="fas fa-chevron-right"></i> 14. Contact Information</a></li>
+            </ul>
+        </div>
+
+        <div class="important-note">
+            <h3><i class="fas fa-exclamation-triangle"></i> Important Notice</h3>
+            <p>By accessing or using StudyMate, you agree to be bound by these Terms of Service. If you disagree with
+                any part of the terms, you may not access the service. These terms constitute a legally binding
+                agreement between you and StudyMate.</p>
+        </div>
+
+        <div class="terms-section" id="agreement">
+            <h2>1. Agreement to Terms</h2>
+            <p>By accessing and using StudyMate ("Service"), you accept and agree to be bound by the terms and provision
+                of this agreement. In addition, when using these particular services, you shall be subject to any posted
+                guidelines or rules applicable to such services.</p>
+            <p>Any participation in this service will constitute acceptance of this agreement. If you do not agree to
+                abide by the above, please do not use this service.</p>
+        </div>
+
+        <div class="terms-section" id="eligibility">
+            <h2>2. Eligibility</h2>
+            <p>You must be at least 13 years of age to use StudyMate. By using the Service, you represent and warrant
+                that:</p>
+            <ul>
+                <li>You are at least 13 years old</li>
+                <li>You have the legal capacity to enter into a binding contract</li>
+                <li>You are not barred from receiving services under applicable law</li>
+                <li>Your use of the Service does not violate any applicable law or regulation</li>
+            </ul>
+            <p>If you are using the Service on behalf of an educational institution or organization, you represent that
+                you have the authority to bind that entity to these Terms.</p>
+        </div>
+
+        <div class="terms-section" id="account">
+            <h2>3. Account Registration</h2>
+            <p>To access certain features of the Service, you must register for an account. When you register, you agree
+                to:</p>
+            <ul>
+                <li>Provide accurate, current, and complete information</li>
+                <li>Maintain and promptly update your account information</li>
+                <li>Maintain the security of your password and accept all risks of unauthorized access</li>
+                <li>Notify us immediately of any unauthorized use of your account</li>
+                <li>Be responsible for all activities that occur under your account</li>
+            </ul>
+            <p>You may not create an account for anyone other than yourself without permission. We reserve the right to
+                disable any user account at our sole discretion.</p>
+        </div>
+
+        <div class="terms-section" id="services">
+            <h2>4. Services Description</h2>
+            <p>StudyMate provides an online educational platform offering:</p>
+            <ul>
+                <li>Interactive study tools and flashcards</li>
+                <li>Progress tracking and analytics</li>
+                <li>Study materials and resources</li>
+                <li>Community features and study groups</li>
+                <li>Personalized study plans</li>
+                <li>Gamified learning experiences</li>
+            </ul>
+            <p>We reserve the right to modify, suspend, or discontinue any aspect of the Service at any time, including
+                the availability of any feature, database, or content.</p>
+        </div>
+
+        <div class="terms-section" id="subscriptions">
+            <h2>5. Subscriptions & Payments</h2>
+            <h3>Free Services</h3>
+            <p>StudyMate offers certain features for free. We reserve the right to modify or discontinue free features
+                at any time without notice.</p>
+
+            <h3>Premium Services</h3>
+            <p>Some features require a paid subscription ("Premium Services"). By subscribing to Premium Services, you
+                agree to:</p>
+            <ul>
+                <li>Pay all applicable fees for the subscription period</li>
+                <li>Authorize us to charge your chosen payment method</li>
+                <li>Understand that subscriptions automatically renew unless cancelled</li>
+                <li>Cancel at least 24 hours before the renewal date to avoid being charged</li>
+            </ul>
+
+            <h3>Refund Policy</h3>
+            <p>We offer a 14-day money-back guarantee for first-time subscribers. To request a refund, contact our
+                support team within 14 days of your initial purchase.</p>
+        </div>
+
+        <div class="terms-section" id="user-content">
+            <h2>6. User Content</h2>
+            <p>"User Content" means any content you create, upload, post, or share on the Service, including flashcards,
+                notes, comments, and study materials.</p>
+
+            <h3>Your Rights</h3>
+            <p>You retain ownership of your User Content. By posting User Content, you grant StudyMate a worldwide,
+                non-exclusive, royalty-free license to use, reproduce, modify, and display your User Content in
+                connection with the Service.</p>
+
+            <h3>Responsibility</h3>
+            <p>You are solely responsible for your User Content and the consequences of posting it. You represent that
+                you own or have the necessary rights to all User Content you post.</p>
+
+            <h3>Content Standards</h3>
+            <p>User Content must not:</p>
+            <ul>
+                <li>Violate any third-party rights, including copyrights</li>
+                <li>Contain harmful, abusive, or offensive material</li>
+                <li>Include academic dishonesty (cheating, plagiarism)</li>
+                <li>Contain personal information of others without consent</li>
+            </ul>
+        </div>
+
+        <div class="terms-section" id="prohibited">
+            <h2>7. Prohibited Activities</h2>
+            <p>You agree not to engage in any of the following prohibited activities:</p>
+
+            <div class="prohibited-list">
+                <ul>
+                    <li><strong>Academic Dishonesty:</strong> Using the Service to cheat, plagiarize, or engage in
+                        academic fraud</li>
+                    <li><strong>Unauthorized Access:</strong> Attempting to access accounts, systems, or data not
+                        belonging to you</li>
+                    <li><strong>Automated Use:</strong> Using bots, scrapers, or other automated means to access the
+                        Service</li>
+                    <li><strong>Commercial Use:</strong> Using the Service for commercial purposes without authorization
+                    </li>
+                    <li><strong>Harassment:</strong> Harassing, threatening, or bullying other users</li>
+                    <li><strong>Illegal Content:</strong> Posting or sharing illegal, harmful, or offensive content</li>
+                    <li><strong>System Disruption:</strong> Interfering with or disrupting the Service's infrastructure
+                    </li>
+                    <li><strong>Impersonation:</strong> Impersonating others or providing false information</li>
+                </ul>
+            </div>
+
+            <p>Violation of these prohibitions may result in termination of your account and legal action.</p>
+        </div>
+
+        <div class="terms-section" id="intellectual">
+            <h2>8. Intellectual Property</h2>
+            <h3>Our Rights</h3>
+            <p>The Service and its original content, features, and functionality are owned by StudyMate and are
+                protected by international copyright, trademark, patent, trade secret, and other intellectual property
+                laws.</p>
+
+            <h3>Your Rights</h3>
+            <p>You retain ownership of the User Content you create. However, by posting User Content, you grant us the
+                license described in Section 6.</p>
+
+            <h3>Copyright Complaints</h3>
+            <p>We respect intellectual property rights. If you believe your copyright has been infringed, please contact
+                us at copyright@studymate.com with:</p>
+            <ul>
+                <li>Identification of the copyrighted work</li>
+                <li>Identification of the infringing material</li>
+                <li>Your contact information</li>
+                <li>A statement of good faith belief</li>
+                <li>A statement made under penalty of perjury</li>
+                <li>Your electronic signature</li>
+            </ul>
+        </div>
+
+        <div class="terms-section" id="termination">
+            <h2>9. Termination</h2>
+            <p>We may terminate or suspend your account immediately, without prior notice or liability, for any reason,
+                including if you breach the Terms.</p>
+            <p>Upon termination, your right to use the Service will immediately cease. If you wish to terminate your
+                account, you may simply discontinue using the Service or contact us to delete your account.</p>
+            <p>All provisions of the Terms which by their nature should survive termination shall survive, including
+                ownership provisions, warranty disclaimers, indemnity, and limitations of liability.</p>
+        </div>
+
+        <div class="terms-section" id="disclaimer">
+            <h2>10. Disclaimer</h2>
+            <p>THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. STUDYMATE MAKES NO WARRANTIES, EXPRESSED
+                OR IMPLIED, AND HEREBY DISCLAIMS AND NEGATES ALL OTHER WARRANTIES INCLUDING, WITHOUT LIMITATION:</p>
+            <ul>
+                <li>Implied warranties of merchantability or fitness for a particular purpose</li>
+                <li>Warranties that the Service will be uninterrupted, timely, secure, or error-free</li>
+                <li>Warranties regarding the accuracy, reliability, or completeness of content</li>
+                <li>Warranties that errors will be corrected</li>
+            </ul>
+            <p>StudyMate does not guarantee academic success, improved grades, or specific educational outcomes. Your
+                academic performance depends on multiple factors beyond our control.</p>
+        </div>
+
+        <div class="terms-section" id="limitation">
+            <h2>11. Limitation of Liability</h2>
+            <p>IN NO EVENT SHALL STUDYMATE, ITS DIRECTORS, EMPLOYEES, PARTNERS, AGENTS, SUPPLIERS, OR AFFILIATES BE
+                LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT
+                LIMITATION:</p>
+            <ul>
+                <li>Loss of profits, data, use, goodwill, or other intangible losses</li>
+                <li>Costs of procurement of substitute goods or services</li>
+                <li>Academic consequences resulting from use of the Service</li>
+                <li>Damages resulting from unauthorized access to or alteration of your transmissions or data</li>
+            </ul>
+            <p>OUR TOTAL CUMULATIVE LIABILITY TO YOU FOR ALL CLAIMS ARISING FROM OR RELATING TO THESE TERMS OR THE
+                SERVICE SHALL NOT EXCEED THE AMOUNT YOU HAVE PAID US IN THE LAST 12 MONTHS.</p>
+        </div>
+
+        <div class="terms-section" id="governing">
+            <h2>12. Governing Law</h2>
+            <p>These Terms shall be governed and construed in accordance with the laws of the State of California,
+                United States, without regard to its conflict of law provisions.</p>
+            <p>Any dispute arising from these Terms or your use of the Service shall be resolved in the state or federal
+                courts located in San Francisco, California.</p>
+            <p>If you are a consumer in the European Union, you may benefit from any mandatory provisions of the law of
+                the country in which you are resident.</p>
+        </div>
+
+        <div class="terms-section" id="changes">
+            <h2>13. Changes to Terms</h2>
+            <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision
+                is material, we will provide at least 30 days' notice prior to any new terms taking effect.</p>
+            <p>What constitutes a material change will be determined at our sole discretion. By continuing to access or
+                use our Service after those revisions become effective, you agree to be bound by the revised terms.</p>
+            <p>If you do not agree to the new terms, please stop using the Service.</p>
+        </div>
+
+        <div class="terms-section" id="contact">
+            <h2>14. Contact Information</h2>
+            <p>If you have any questions about these Terms, please contact us:</p>
+            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a
+                    href="mailto:legal@studymate.com">legal@studymate.com</a></p>
+            <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +1 (555) 123-4567 (Legal Department)</p>
+            <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> 123 Education Street, Learning City, LC
+                10101</p>
+            <p><i class="fas fa-clock"></i> <strong>Business Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM PST</p>
+
+            <p style="margin-top: 1.5rem;"><strong>Notice:</strong> For legal notices, please send via registered mail
+                to the address above with a copy via email to legal@studymate.com.</p>
+        </div>
+
+        <div class="acceptance-box">
+            <h3><i class="fas fa-file-signature"></i> Acceptance of Terms</h3>
+            <p>By clicking "I Accept" below, you acknowledge that you have read, understood, and agree to be bound by
+                these Terms of Service.</p>
+            <p><small>This constitutes a legally binding agreement between you and StudyMate.</small></p>
+            <button class="accept-btn" id="acceptTermsBtn">
+                <i class="fas fa-check-circle"></i> I Accept the Terms of Service
+            </button>
+            <p style="margin-top: 1rem; font-size: 0.9rem;"><i class="fas fa-info-circle"></i> You must accept these
+                terms to use StudyMate's services.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo footer-logo">
+                    <span class="logoText">Study<span class="mate">Mate</span></span>
+                </div>
+                <p>Making learning efficient, effective, and accessible for every student worldwide.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/14RPMbnhgGu/" class="facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@AhmedAli-k7b" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/ahmeyali.9/" class="instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/ahmed-ali-883129359" class="linkedin"><i
+                            class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="study-tools.html"><i class="fas fa-chevron-right"></i> Study Tools</a></li>
+                    <li><a href="flashcards.html"><i class="fas fa-chevron-right"></i> Flashcards</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chevron-right"></i> Progress</a></li>
+                    <li><a href="community.html"><i class="fas fa-chevron-right"></i> Community</a></li>
+                    <li><a href="resources.html"><i class="fas fa-chevron-right"></i> Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> support@studymate.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StudyMate. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a
+                    href="terms-of-service.html">Terms of Service</a></p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

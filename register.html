@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for Event - StudyMate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Bebas+Neue&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logoText">Study<span class="mate">Mate</span></span>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="study-tools.html"><i class="fas fa-tools"></i> Study Tools</a></li>
+                <li><a href="flashcards.html"><i class="fas fa-layer-group"></i> Flashcards</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+                <li><a href="community.html" class="active"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+                <button class="nav-btn"><a href="signUp.html"><i class="fas fa-user-plus"></i> Sign Up</a></button>
+            </ul>
+        </div>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Event Registration Header -->
+    <section class="registration-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="community.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Community</a>
+                <h1>Register for Event</h1>
+                <p>Secure your spot for this exclusive learning opportunity</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details & Registration Form -->
+    <section class="registration-section">
+        <div class="container">
+            <div class="registration-grid">
+                <!-- Event Details Card -->
+                <div class="event-details-card">
+                    <div class="event-header">
+                        <div class="event-date-large">
+                            <span class="event-day">18</span>
+                            <span class="event-month">DEC</span>
+                            <span class="event-year">2025</span>
+                        </div>
+                        <div class="event-title">
+                            <span class="event-badge qna">Q&A Session</span>
+                            <h2>Organic Chemistry Live Q&A</h2>
+                            <div class="event-instructor">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>Prof. James Wilson</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-info">
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Time</h4>
+                                <p>6:30 PM - 8:00 PM EST</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-calendar"></i>
+                            <div>
+                                <h4>Date</h4>
+                                <p>Thursday, December 18, 2025</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-video"></i>
+                            <div>
+                                <h4>Platform</h4>
+                                <p>Zoom Webinar (Link will be sent via email)</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>Available Spots</h4>
+                                <p><span class="spots-left">47</span> out of 100 spots remaining</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-description">
+                        <h3>About This Session</h3>
+                        <p>Join Prof. James Wilson, an experienced chemistry professor specializing in organic
+                            chemistry, for an exclusive live Q&A session. This interactive session is designed to help
+                            you:</p>
+                        <ul>
+                            <li>Get your specific questions answered in real-time</li>
+                            <li>Understand complex organic chemistry concepts</li>
+                            <li>Learn problem-solving strategies for exams</li>
+                            <li>Receive personalized guidance on challenging topics</li>
+                            <li>Connect with peers facing similar challenges</li>
+                        </ul>
+                        <p><strong>Prerequisites:</strong> Basic understanding of organic chemistry recommended</p>
+                        <p><strong>Materials needed:</strong> Pen, paper, and your questions ready!</p>
+                    </div>
+
+                    <div class="event-testimonials">
+                        <h3>What Previous Attendees Say</h3>
+                        <div class="testimonial">
+                            <p>"Prof. Wilson clarified concepts I'd been struggling with for weeks. Highly recommended!"
+                            </p>
+                            <span>- Sarah L., Pre-med Student</span>
+                        </div>
+                        <div class="testimonial">
+                            <p>"The live Q&A format was perfect for getting instant feedback on my questions."</p>
+                            <span>- Michael T., Chemistry Major</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <div class="registration-form-card">
+                    <div class="form-header">
+                        <h3><i class="fas fa-user-plus"></i> Registration Form</h3>
+                        <div class="form-price">
+                            <span class="price-free">FREE</span>
+                            <span class="price-note">Limited spots available</span>
+                        </div>
+                    </div>
+
+                    <form id="registrationForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number (optional)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="university">University/Institution</label>
+                            <input type="text" id="university" name="university" placeholder="Where do you study?">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="course">Course/Program</label>
+                            <select id="course" name="course">
+                                <option value="">Select your course</option>
+                                <option value="pre-med">Pre-med / Medicine</option>
+                                <option value="chemistry">Chemistry</option>
+                                <option value="biology">Biology</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="questions">Questions/Topics of Interest</label>
+                            <textarea id="questions" name="questions" rows="4"
+                                placeholder="What specific topics or questions would you like Prof. Wilson to address? (Optional)"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="experience">Experience Level</label>
+                            <div class="experience-levels">
+                                <div class="level-option">
+                                    <input type="radio" id="beginner" name="experience" value="beginner">
+                                    <label for="beginner">
+                                        <i class="fas fa-seedling"></i>
+                                        <span>Beginner</span>
+                                    </label>
+                                </div>
+                                <div class="level-option">
+                                    <input type="radio" id="intermediate" name="experience" value="intermediate"
+                                        checked>
+                                    <label for="intermediate">
+                                        <i class="fas fa-leaf"></i>
+                                        <span>Intermediate</span>
+                                    </label>
+                                </div>
+                                <div class="level-option">
+                                    <input type="radio" id="advanced" name="experience" value="advanced">
+                                    <label for="advanced">
+                                        <i class="fas fa-tree"></i>
+                                        <span>Advanced</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter" checked>
+                            <label for="newsletter">Receive updates about future events and study resources</label>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">I agree to the <a href="terms-of-service.html">Terms of Service</a> and
+                                <a href="privacy-policy.html">Privacy Policy</a> *</label>
+                        </div>
+
+                        <div class="form-notice">
+                            <i class="fas fa-info-circle"></i>
+                            <p>After registration, you'll receive a confirmation email with the webinar link and
+                                calendar invitation.</p>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-check-circle"></i>
+                            Confirm Registration
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" id="confirmationModal">
+        <div class="modal">
+            <div class="modal-header">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h3>Registration Successful!</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <p>Thank you for registering for the Organic Chemistry Live Q&A session!</p>
+
+                <div class="confirmation-details">
+                    <div class="detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Confirmation Email</h4>
+                            <p>A confirmation email has been sent to <span id="userEmail">your email</span></p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <div>
+                            <h4>Calendar Invite</h4>
+                            <p>Check your email for the calendar invitation with the Zoom link</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-bell"></i>
+                        <div>
+                            <h4>Reminder</h4>
+                            <p>We'll send you a reminder 24 hours before the event starts</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="next-steps">
+                    <h4>Next Steps:</h4>
+                    <ol>
+                        <li>Check your email (including spam folder) for confirmation</li>
+                        <li>Add the event to your calendar</li>
+                        <li>Prepare your questions in advance</li>
+                        <li>Test your Zoom setup 15 minutes before the session</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="modal-btn primary" id="goToCommunity">
+                    <i class="fas fa-users"></i>
+                    Back to Community
+                </button>
+                <button class="modal-btn secondary" id="addToCalendar">
+                    <i class="fas fa-calendar-plus"></i>
+                    Add to Calendar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo footer-logo">
+                    <span class="logoText">Study<span class="mate">Mate</span></span>
+                </div>
+                <p>Making learning efficient, effective, and accessible for every student worldwide.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/14RPMbnhgGu/" class="facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@AhmedAli-k7b" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/ahmeyali.9/" class="instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/ahmed-ali-883129359" class="linkedin"><i
+                            class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="study-tools.html"><i class="fas fa-chevron-right"></i> Study Tools</a></li>
+                    <li><a href="flashcards.html"><i class="fas fa-chevron-right"></i> Flashcards</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chevron-right"></i> Progress</a></li>
+                    <li><a href="community.html"><i class="fas fa-chevron-right"></i> Community</a></li>
+                    <li><a href="resources.html"><i class="fas fa-chevron-right"></i> Resources</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> events@studymate.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StudyMate. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a
+                    href="terms-of-service.html">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="register.js"></script>
+</body>
+
+</html>

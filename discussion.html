@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Discussions & Groups - StudyMate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="discussion.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logoText">Study<span class="mate">Mate</span></span>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="study-tools.html"><i class="fas fa-tools"></i> Study Tools</a></li>
+                <li><a href="flashcards.html"><i class="fas fa-layer-group"></i> Flashcards</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+                <li><a href="community.html" class="active"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+                <li><button class="nav-btn"><a href="signUp.html"><i class="fas fa-user-plus"></i> Sign Up</a></button>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="community-hero">
+        <div class="container">
+            <h1>Join Discussions & Groups</h1>
+            <p>Connect with peers, share knowledge, and grow together in our vibrant learning community.</p>
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search groups, discussions, or topics...">
+                    <button type="button">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Navigation -->
+    <section class="community-nav">
+        <div class="container">
+            <div class="nav-tabs">
+                <a href="#all-groups" class="active">
+                    <i class="fas fa-users"></i>
+                    All Groups
+                </a>
+                <a href="#discussions">
+                    <i class="fas fa-comments"></i>
+                    Discussions
+                </a>
+                <a href="#events">
+                    <i class="fas fa-calendar"></i>
+                    Events
+                </a>
+                <a href="#popular">
+                    <i class="fas fa-star"></i>
+                    Popular
+                </a>
+
+                <a href="#my-groups">
+                    <i class="fas fa-user-friends"></i>
+                    My Groups
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Content -->
+    <section class="community-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Main Content -->
+                <div class="main-content">
+                    <!-- Groups Section -->
+                    <section class="groups-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-user-friends"></i> Study Groups</h2>
+                            <div class="section-actions">
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-filter"></i>
+                                    Filter
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="groups-grid">
+                            <!-- Group 1 -->
+                            <div class="group-card">
+                                <div class="group-banner chemistry"></div>
+                                <div class="group-icon">
+                                    <i class="fas fa-atom"></i>
+                                </div>
+                                <div class="group-content">
+                                    <div class="group-header">
+                                        <span class="group-category">Chemistry</span>
+                                        <h3 class="group-title">Organic Chemistry Study Group</h3>
+                                        <p class="group-description">Master reaction mechanisms, synthesis, and
+                                            spectroscopy together. Perfect for pre-med and chemistry majors.</p>
+                                    </div>
+                                    <div class="group-stats">
+                                        <div class="members-count">
+                                            <i class="fas fa-users"></i>
+                                            128 members
+                                        </div>
+                                        <button class="join-btn">
+                                            <i class="fas fa-plus"></i>
+                                            Join Group
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Group 2 -->
+                            <div class="group-card">
+                                <div class="group-banner physics"></div>
+                                <div class="group-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="group-content">
+                                    <div class="group-header">
+                                        <span class="group-category">Physics</span>
+                                        <h3 class="group-title">Physics Problem Solvers</h3>
+                                        <p class="group-description">Tackle challenging physics problems, from classical
+                                            mechanics to quantum physics. Weekly problem sessions.</p>
+                                    </div>
+                                    <div class="group-stats">
+                                        <div class="members-count">
+                                            <i class="fas fa-users"></i>
+                                            94 members
+                                        </div>
+                                        <button class="join-btn joined">
+                                            <i class="fas fa-check"></i>
+                                            Joined
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Group 3 -->
+                            <div class="group-card">
+                                <div class="group-banner math"></div>
+                                <div class="group-icon">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <div class="group-content">
+                                    <div class="group-header">
+                                        <span class="group-category">Mathematics</span>
+                                        <h3 class="group-title">Calculus & Linear Algebra</h3>
+                                        <p class="group-description">From derivatives to eigenvalues, let's solve math
+                                            problems together. Great for engineering students.</p>
+                                    </div>
+                                    <div class="group-stats">
+                                        <div class="members-count">
+                                            <i class="fas fa-users"></i>
+                                            156 members
+                                        </div>
+                                        <button class="join-btn">
+                                            <i class="fas fa-plus"></i>
+                                            Join Group
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Group 4 -->
+                            <div class="group-card">
+                                <div class="group-banner biology"></div>
+                                <div class="group-icon">
+                                    <i class="fas fa-dna"></i>
+                                </div>
+                                <div class="group-content">
+                                    <div class="group-header">
+                                        <span class="group-category">Biology</span>
+                                        <h3 class="group-title">MCAT Biology Prep</h3>
+                                        <p class="group-description">Focused group for MCAT biology section preparation.
+                                            Share resources and study strategies.</p>
+                                    </div>
+                                    <div class="group-stats">
+                                        <div class="members-count">
+                                            <i class="fas fa-users"></i>
+                                            87 members
+                                        </div>
+                                        <button class="join-btn">
+                                            <i class="fas fa-plus"></i>
+                                            Join Group
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Active Discussions -->
+                    <section class="discussions-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-comments"></i> Active Discussions</h2>
+
+                        </div>
+
+                        <div class="discussion-filters">
+                            <button class="filter-btn active">All</button>
+                            <button class="filter-btn">Chemistry</button>
+                            <button class="filter-btn">Physics</button>
+                            <button class="filter-btn">Math</button>
+                            <button class="filter-btn">Biology</button>
+                            <button class="filter-btn">Unanswered</button>
+                        </div>
+
+                        <div class="discussion-list">
+                            <!-- Discussion 1 -->
+                            <div class="discussion-item">
+                                <div class="discussion-header">
+                                    <h3 class="discussion-title">Help with SN1 vs SN2 reactions</h3>
+                                    <div class="discussion-tags">
+                                        <span class="tag">Chemistry</span>
+                                        <span class="tag urgent">Urgent</span>
+                                    </div>
+                                </div>
+                                <p>I'm confused about when to use SN1 vs SN2 mechanisms. Can someone explain the key
+                                    differences?</p>
+                                <div class="discussion-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-user"></i>
+                                        Sarah Chen
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        2 hours ago
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-comment"></i>
+                                        8 replies
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-eye"></i>
+                                        45 views
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Discussion 2 -->
+                            <div class="discussion-item">
+                                <div class="discussion-header">
+                                    <h3 class="discussion-title">Best resources for quantum mechanics?</h3>
+                                    <div class="discussion-tags">
+                                        <span class="tag">Physics</span>
+                                        <span class="tag popular">Popular</span>
+                                    </div>
+                                </div>
+                                <p>Looking for textbook recommendations and online resources for quantum mechanics
+                                    course.</p>
+                                <div class="discussion-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-user"></i>
+                                        Michael Rodriguez
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        5 hours ago
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-comment"></i>
+                                        12 replies
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-eye"></i>
+                                        78 views
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Discussion 3 -->
+                            <div class="discussion-item">
+                                <div class="discussion-header">
+                                    <h3 class="discussion-title">Calculus III - Vector fields problem</h3>
+                                    <div class="discussion-tags">
+                                        <span class="tag">Mathematics</span>
+                                    </div>
+                                </div>
+                                <p>Stuck on this problem about conservative vector fields. Can someone walk me through
+                                    the solution?</p>
+                                <div class="discussion-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-user"></i>
+                                        Alex Johnson
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        1 day ago
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-comment"></i>
+                                        5 replies
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-eye"></i>
+                                        32 views
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="community-sidebar">
+                    <!-- Active Members -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-user-clock"></i> Active Members</h3>
+                        <div class="active-members">
+                            <div class="member-item">
+                                <div class="member-avatar">SC</div>
+                                <div class="member-info">
+                                    <h4>Sarah Chen</h4>
+                                    <p>Chemistry Major</p>
+                                </div>
+                                <div class="member-status"></div>
+                            </div>
+                            <div class="member-item">
+                                <div class="member-avatar">MR</div>
+                                <div class="member-info">
+                                    <h4>Michael R.</h4>
+                                    <p>Physics Student</p>
+                                </div>
+                                <div class="member-status"></div>
+                            </div>
+                            <div class="member-item">
+                                <div class="member-avatar">AJ</div>
+                                <div class="member-info">
+                                    <h4>Alex Johnson</h4>
+                                    <p>Engineering</p>
+                                </div>
+                                <div class="member-status"></div>
+                            </div>
+                            <div class="member-item">
+                                <div class="member-avatar">PL</div>
+                                <div class="member-info">
+                                    <h4>Priya L.</h4>
+                                    <p>Pre-med Student</p>
+                                </div>
+                                <div class="member-status"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-chart-bar"></i> Community Stats</h3>
+                        <div class="quick-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">1,245</div>
+                                <div class="stat-label">Total Members</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">48</div>
+                                <div class="stat-label">Active Groups</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">327</div>
+                                <div class="stat-label">Discussions</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Events This Month</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Events -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
+                        <div class="upcoming-events">
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="event-day">18</span>
+                                    <span class="event-month">DEC</span>
+                                </div>
+                                <h4 class="event-title">Organic Chemistry Q&A</h4>
+                                <div class="event-meta">
+                                    <span><i class="fas fa-clock"></i> 6:30 PM</span>
+                                    <span><i class="fas fa-user"></i> Prof. Wilson</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="event-day">20</span>
+                                    <span class="event-month">DEC</span>
+                                </div>
+                                <h4 class="event-title">Physics Study Session</h4>
+                                <div class="event-meta">
+                                    <span><i class="fas fa-clock"></i> 4:00 PM</span>
+                                    <span><i class="fas fa-user"></i> Group Hosted</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="event-day">22</span>
+                                    <span class="event-month">DEC</span>
+                                </div>
+                                <h4 class="event-title">Math Problem Workshop</h4>
+                                <div class="event-meta">
+                                    <span><i class="fas fa-clock"></i> 2:00 PM</span>
+                                    <span><i class="fas fa-user"></i> TA Session</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Popular Topics -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-fire"></i> Popular Topics</h3>
+                        <div class="popular-topics">
+                            <div class="topic-item">
+                                <div class="topic-icon">
+                                    <i class="fas fa-atom"></i>
+                                </div>
+                                <div class="topic-info">
+                                    <h4>Organic Chemistry</h4>
+                                    <p>Reactions & Mechanisms</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <div class="topic-icon">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <div class="topic-info">
+                                    <h4>Calculus</h4>
+                                    <p>Integration & Series</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <div class="topic-icon">
+                                    <i class="fas fa-dna"></i>
+                                </div>
+                                <div class="topic-info">
+                                    <h4>Biology</h4>
+                                    <p>Cellular Processes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo footer-logo">
+                    <span class="logoText">Study<span class="mate">Mate</span></span>
+                </div>
+                <p>Making learning efficient, effective, and accessible for every student worldwide.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/14RPMbnhgGu/" class="facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@AhmedAli-k7b" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/ahmeyali.9/" class="instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/ahmed-ali-883129359" class="linkedin"><i
+                            class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="study-tools.html"><i class="fas fa-chevron-right"></i> Study Tools</a></li>
+                    <li><a href="flashcards.html"><i class="fas fa-chevron-right"></i> Flashcards</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chevron-right"></i> Progress</a></li>
+                    <li><a href="community.html"><i class="fas fa-chevron-right"></i> Community</a></li>
+                    <li><a href="resources.html"><i class="fas fa-chevron-right"></i> Resources</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> community@studymate.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StudyMate. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a
+                    href="terms-of-service.html">Terms of
+                    Service</a></p>
+        </div>
+    </footer>
+<script src="discussion.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - StudyMate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Bebas+Neue&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Dashboard Styles */
+        .dashboard-header {
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            color: white;
+            padding: 2rem 5%;
+            margin-bottom: 2rem;
+        }
+        
+        .dashboard-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .user-welcome h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .user-welcome p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .dashboard-content {
+            padding: 0 5% 4rem;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .dashboard-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .action-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: #2d3436;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        
+        .action-btn:hover {
+            background: #6c5ce7;
+            color: white;
+            border-color: #6c5ce7;
+        }
+        
+        .user-profile {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        /* Section Styles */
+        .dashboard-section {
+            display: none;
+            padding: 2rem 5%;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .dashboard-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #2d3436;
+            margin: 0;
+        }
+
+        .section-header p {
+            color: #636e72;
+            font-size: 1.1rem;
+        }
+
+        .back-btn {
+            background: none;
+            border: 2px solid #6c5ce7;
+            color: #6c5ce7;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            align-self: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #6c5ce7;
+            color: white;
+        }
+
+        /* Schedule Section */
+        .schedule-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .schedule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .schedule-header h3 {
+            font-size: 1.8rem;
+            color: #2d3436;
+            margin: 0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .schedule-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 4px solid #6c5ce7;
+        }
+
+        .schedule-item h4 {
+            color: #2d3436;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .schedule-item p {
+            color: #636e72;
+            margin: 0 0 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .schedule-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #a29bfe;
+        }
+
+        .schedule-template {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .schedule-template h3 {
+            margin-bottom: 1.5rem;
+            color: #2d3436;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .template-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .template-card i {
+            font-size: 2.5rem;
+            color: #6c5ce7;
+            margin-bottom: 1rem;
+        }
+
+        .template-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: #2d3436;
+        }
+
+        .template-card p {
+            color: #636e72;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-secondary {
+            background: white;
+            border: 2px solid #6c5ce7;
+            color: #6c5ce7;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-secondary:hover {
+            background: #6c5ce7;
+            color: white;
+        }
+
+        /* Community Section */
+        .community-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .community-view {
+            display: none;
+        }
+
+        .community-view.active {
+            display: block;
+        }
+
+        .community-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .community-header h3 {
+            font-size: 1.8rem;
+            color: #2d3436;
+            margin: 0;
+        }
+
+        .search-box {
+            display: flex;
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e9ecef;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            background: none;
+            color: #2d3436;
+            font-size: 1rem;
+        }
+
+        .search-box input:focus {
+            outline: none;
+        }
+
+        .search-box button {
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background: #5a4fcf;
+        }
+
+        .groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .group-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .group-card:hover {
+            transform: translateY(-5px);
+            border-color: #6c5ce7;
+        }
+
+        .group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .group-header h4 {
+            margin: 0;
+            color: #2d3436;
+        }
+
+        .group-members {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #636e72;
+            font-size: 0.9rem;
+        }
+
+        .group-subject {
+            display: inline-block;
+            background: rgba(108, 92, 231, 0.1);
+            color: #6c5ce7;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .group-description {
+            color: #636e72;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .group-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .join-btn {
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
+            transition: background 0.3s ease;
+        }
+
+        .join-btn:hover {
+            background: #5a4fcf;
+        }
+
+        .view-btn {
+            background: white;
+            border: 2px solid #6c5ce7;
+            color: #6c5ce7;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn:hover {
+            background: #6c5ce7;
+            color: white;
+        }
+
+        /* Create Group Form */
+        .create-group-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2d3436;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #2d3436;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6c5ce7;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Profile Section */
+        .profile-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-view {
+            display: none;
+        }
+
+        .profile-view.active {
+            display: block;
+        }
+
+        .profile-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .profile-avatar-edit {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .avatar-edit-btn {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .avatar-edit-btn:hover {
+            background: #5a4fcf;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard-nav {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .dashboard-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .community-header,
+            .schedule-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .groups-grid,
+            .schedule-grid,
+            .template-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Active State for Cards */
+        .dashboard-card.active-card {
+            border: 2px solid #6c5ce7;
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.2);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-weight: 500;
+            animation: slideIn 0.3s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 400px;
+        }
+
+        .notification.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .notification.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .notification.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logoText">Study<span class="mate">Mate</span></span>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="study-tools.html"><i class="fas fa-tools"></i> Study Tools</a></li>
+                <li><a href="flashcards.html"><i class="fas fa-layer-group"></i> Flashcards</a></li>
+                <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+                <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+                <li id="userGreeting"></li>
+                <button class="nav-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </ul>
+        </div>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Dashboard Main View -->
+    <section class="dashboard-header">
+        <div class="dashboard-nav">
+            <div class="user-welcome">
+                <h1 id="welcomeMessage">Welcome to StudyMate!</h1>
+                <p id="userStats">Start your learning journey today</p>
+            </div>
+            <div class="user-actions">
+                <button class="cta-btn" id="startLearningBtn">
+                    <i class="fas fa-play"></i> Start Learning
+                </button>
+            </div>
+        </div>
+        
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <h3>0</h3>
+                <p>Study Sessions</p>
+            </div>
+            <div class="stat-card">
+                <h3>0</h3>
+                <p>Flashcards Created</p>
+            </div>
+            <div class="stat-card">
+                <h3>0%</h3>
+                <p>Progress</p>
+            </div>
+            <div class="stat-card">
+                <h3>1</h3>
+                <p>Day Streak</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard-content">
+        <div class="dashboard-grid">
+            <div class="dashboard-card" id="studyToolsCard">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div>
+                        <h3>Smart Study Tools</h3>
+                        <p>AI-powered learning</p>
+                    </div>
+                </div>
+                <p>Access our intelligent study tools that adapt to your learning style and pace.</p>
+                <div class="quick-actions">
+                    <a href="flashcards.html" class="action-btn">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Flashcards</span>
+                    </a>
+                    <a href="study-tools.html" class="action-btn">
+                        <i class="fas fa-tools"></i>
+                        <span>Study Tools</span>
+                    </a>
+                    <a href="progress.html" class="action-btn">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Progress</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="dashboard-card" id="scheduleCard">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Study Schedule</h3>
+                        <p>Plan your learning</p>
+                    </div>
+                </div>
+                <p>Create a personalized study schedule to stay organized and consistent.</p>
+                <div class="quick-actions">
+                    <a href="#schedule" class="action-btn" id="createScheduleBtn">
+                        <i class="fas fa-plus"></i>
+                        <span>Create Schedule</span>
+                    </a>
+                    <a href="#schedule-template" class="action-btn" id="downloadTemplateBtn">
+                        <i class="fas fa-download"></i>
+                        <span>Download Template</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="dashboard-card" id="communityCard">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <h3>Community</h3>
+                        <p>Learn together</p>
+                    </div>
+                </div>
+                <p>Join study groups, connect with peers, and collaborate on learning.</p>
+                <div class="quick-actions">
+                    <a href="#community" class="action-btn" id="findGroupsBtn">
+                        <i class="fas fa-search"></i>
+                        <span>Find Groups</span>
+                    </a>
+                    <a href="#create-group" class="action-btn" id="createGroupBtn">
+                        <i class="fas fa-plus"></i>
+                        <span>Create Group</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="dashboard-card user-profile" id="profileCard">
+                <div class="profile-avatar" id="profileAvatar">
+                    U
+                </div>
+                <h3 id="userFullName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+                <div class="user-details">
+                    <p><i class="fas fa-graduation-cap"></i> <span id="userEducation">Student</span></p>
+                    <p><i class="fas fa-calendar"></i> Member since <span id="memberSince">Today</span></p>
+                </div>
+                <a href="#edit-profile" class="action-btn" style="margin-top: 1.5rem;">
+                    <i class="fas fa-user-edit"></i>
+                    <span>Edit Profile</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="dashboard-section" id="scheduleSection">
+        <div class="section-header">
+            <button class="back-btn" onclick="hideSection()">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </button>
+            <h2>Study Schedule</h2>
+            <p>Plan your learning journey</p>
+        </div>
+        
+        <div class="schedule-container">
+            <div class="schedule-header">
+                <h3>Your Weekly Schedule</h3>
+                <button class="btn-primary" id="addScheduleItem">
+                    <i class="fas fa-plus"></i> Add Session
+                </button>
+            </div>
+            
+            <div class="schedule-grid" id="scheduleGrid">
+                <!-- Schedule items will be loaded here -->
+            </div>
+            
+            <div class="schedule-template" id="templateSection">
+                <h3>Download Templates</h3>
+                <div class="template-grid">
+                    <div class="template-card">
+                        <i class="fas fa-file-excel"></i>
+                        <h4>Excel Template</h4>
+                        <p>Weekly study planner</p>
+                        <button class="btn-secondary" onclick="downloadTemplate('excel')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                    <div class="template-card">
+                        <i class="fas fa-file-pdf"></i>
+                        <h4>PDF Template</h4>
+                        <p>Printable schedule</p>
+                        <button class="btn-secondary" onclick="downloadTemplate('pdf')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                    <div class="template-card">
+                        <i class="fas fa-calendar"></i>
+                        <h4>Google Calendar</h4>
+                        <p>Sync with calendar</p>
+                        <button class="btn-secondary" onclick="syncWithCalendar()">
+                            <i class="fas fa-sync"></i> Sync
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="dashboard-section" id="communitySection">
+        <div class="section-header">
+            <button class="back-btn" onclick="hideSection()">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </button>
+            <h2>Study Community</h2>
+            <p>Connect and learn together</p>
+        </div>
+        
+        <div class="community-container">
+            <!-- Find Groups View -->
+            <div class="community-view active" id="findGroupsView">
+                <div class="community-header">
+                    <h3>Find Study Groups</h3>
+                    <div class="search-box">
+                        <input type="text" id="groupSearch" placeholder="Search groups by subject or keyword...">
+                        <button onclick="searchGroups()"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                
+                <div class="groups-grid" id="groupsGrid">
+                    <!-- Groups will be loaded here -->
+                </div>
+            </div>
+            
+            <!-- Create Group View -->
+            <div class="community-view" id="createGroupView">
+                <div class="community-header">
+                    <h3>Create New Study Group</h3>
+                </div>
+                
+                <form class="create-group-form" id="createGroupForm">
+                    <div class="form-group">
+                        <label for="groupName">Group Name</label>
+                        <input type="text" id="groupName" placeholder="e.g., Calculus Study Group" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="groupSubject">Subject</label>
+                        <select id="groupSubject" required>
+                            <option value="">Select a subject</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="science">Science</option>
+                            <option value="languages">Languages</option>
+                            <option value="history">History</option>
+                            <option value="programming">Programming</option>
+                            <option value="business">Business</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="groupDescription">Description</label>
+                        <textarea id="groupDescription" placeholder="Describe your study group..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="groupPrivacy">Privacy</label>
+                        <select id="groupPrivacy">
+                            <option value="public">Public (Anyone can join)</option>
+                            <option value="private">Private (Invite only)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="groupMaxMembers">Maximum Members</label>
+                        <input type="number" id="groupMaxMembers" min="2" max="100" value="20">
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-plus"></i> Create Group
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="dashboard-section" id="profileSection">
+        <div class="section-header">
+            <button class="back-btn" onclick="hideSection()">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </button>
+            <h2>Edit Profile</h2>
+            <p>Update your personal information</p>
+        </div>
+        
+        <div class="profile-container">
+            <div class="profile-view active" id="editProfileView">
+                <form class="profile-form" id="editProfileForm">
+                    <div class="profile-avatar-edit">
+                        <div class="avatar-container">
+                            <div class="profile-avatar" id="editableAvatar">
+                                U
+                            </div>
+                            <button type="button" class="avatar-edit-btn" onclick="changeAvatar()">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editFirstName">First Name</label>
+                            <input type="text" id="editFirstName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editLastName">Last Name</label>
+                            <input type="text" id="editLastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editEmail">Email Address</label>
+                        <input type="email" id="editEmail" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editUserType">I am a</label>
+                            <select id="editUserType">
+                                <option value="student">Student</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="professional">Professional</option>
+                                <option value="parent">Parent</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editEducationLevel">Education Level</label>
+                            <select id="editEducationLevel">
+                                <option value="highschool">High School</option>
+                                <option value="undergraduate">Undergraduate</option>
+                                <option value="graduate">Graduate</option>
+                                <option value="professional">Professional</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editBio">Bio</label>
+                        <textarea id="editBio" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editInterests">Interests (comma separated)</label>
+                        <input type="text" id="editInterests" placeholder="e.g., Mathematics, Programming, Science">
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo footer-logo">
+                    <span class="logoText">Study<span class="mate">Mate</span></span>
+                </div>
+                <p>Making learning efficient, effective, and accessible for every student worldwide.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/14RPMbnhgGu/" class="facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@AhmedAli-k7b" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/ahmeyali.9/" class="instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/ahmed-ali-883129359" class="linkedin"><i
+                            class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+             <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="study-tools.html"><i class="fas fa-chevron-right"></i> Study Tools</a></li>
+                    <li><a href="flashcards.html"><i class="fas fa-chevron-right"></i> Flashcards</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chevron-right"></i> Progress</a></li>
+                    <li><a href="community.html"><i class="fas fa-chevron-right"></i> Community</a></li>
+                    <li><a href="resources.html"><i class="fas fa-chevron-right"></i> Resources</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> support@studymate.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StudyMate. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const currentUser = JSON.parse(localStorage.getItem('studymate_current_user') || 'null');
+            const isLoggedIn = localStorage.getItem('studymate_is_logged_in') === 'true';
+            
+            if (!currentUser || !isLoggedIn) {
+                // Redirect to signup page if not logged in
+                window.location.href = 'signUp.html';
+                return;
+            }
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const menu = document.querySelector('.menu');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    menu.classList.toggle('active');
+                    if (menu.classList.contains('active')) {
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                    } else {
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            }
+            
+            // Update user info
+            updateUserInfo(currentUser);
+            
+            // Initialize sections
+            initializeSections();
+            
+            // Load data
+            loadUserData();
+            loadScheduleData();
+            loadCommunityData();
+            
+            // Setup event listeners
+            setupEventListeners();
+            
+            // Handle hash changes
+            window.addEventListener('hashchange', handleHashChange);
+            
+            // Initial hash check
+            handleHashChange();
+            
+            // Logout functionality
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    localStorage.removeItem('studymate_current_user');
+                    localStorage.setItem('studymate_is_logged_in', 'false');
+                    window.location.href = 'index.html';
+                });
+            }
+            
+            // Start learning button
+            const startLearningBtn = document.getElementById('startLearningBtn');
+            if (startLearningBtn) {
+                startLearningBtn.addEventListener('click', function() {
+                    window.location.href = 'study-tools.html';
+                });
+            }
+        });
+        
+        // Global data storage
+        const userData = {
+            schedule: [],
+            groups: [],
+            createdGroups: []
+        };
+        
+        // Initialize sections
+        function initializeSections() {
+            // Hide all sections initially
+            document.querySelectorAll('.dashboard-section').forEach(section => {
+                section.classList.remove('active');
+            });
+        }
+        
+        // Handle hash changes
+        function handleHashChange() {
+            const hash = window.location.hash.substring(1);
+            
+            // Remove active class from all cards
+            document.querySelectorAll('.dashboard-card').forEach(card => {
+                card.classList.remove('active-card');
+            });
+            
+            // Show/hide sections based on hash
+            switch(hash) {
+                case 'schedule':
+                    showSection('scheduleSection');
+                    document.getElementById('scheduleCard').classList.add('active-card');
+                    break;
+                case 'schedule-template':
+                    showSection('scheduleSection');
+                    document.getElementById('scheduleCard').classList.add('active-card');
+                    // Scroll to template section
+                    setTimeout(() => {
+                        document.getElementById('templateSection').scrollIntoView({ behavior: 'smooth' });
+                    }, 300);
+                    break;
+                case 'community':
+                    showSection('communitySection');
+                    document.getElementById('communityCard').classList.add('active-card');
+                    showCommunityView('findGroupsView');
+                    break;
+                case 'create-group':
+                    showSection('communitySection');
+                    document.getElementById('communityCard').classList.add('active-card');
+                    showCommunityView('createGroupView');
+                    break;
+                case 'edit-profile':
+                    showSection('profileSection');
+                    document.getElementById('profileCard').classList.add('active-card');
+                    break;
+                default:
+                    // Show dashboard by default
+                    showDashboard();
+                    break;
+            }
+        }
+        
+        // Show section
+        function showSection(sectionId) {
+            // Hide dashboard content
+            document.querySelector('.dashboard-header').style.display = 'none';
+            document.querySelector('.dashboard-content').style.display = 'none';
+            document.querySelector('footer').style.display = 'none';
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+        
+        // Show dashboard
+        function showDashboard() {
+            // Show dashboard content
+            document.querySelector('.dashboard-header').style.display = 'block';
+            document.querySelector('.dashboard-content').style.display = 'block';
+            document.querySelector('footer').style.display = 'block';
+            
+            // Hide all sections
+            document.querySelectorAll('.dashboard-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Clear hash
+            window.location.hash = '';
+        }
+        
+        // Hide section (back to dashboard)
+        function hideSection() {
+            showDashboard();
+        }
+        
+        // Show community view
+        function showCommunityView(viewId) {
+            document.querySelectorAll('.community-view').forEach(view => {
+                view.classList.remove('active');
+            });
+            document.getElementById(viewId).classList.add('active');
+        }
+        
+        // Update user info
+        function updateUserInfo(user) {
+            // Update welcome message
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            if (welcomeMessage) {
+                const hour = new Date().getHours();
+                const greeting = hour < 12 ? 'Good Morning' : hour < 18 ? 'Good Afternoon' : 'Good Evening';
+                welcomeMessage.textContent = `${greeting}, ${user.fullName.split(' ')[0]}!`;
+            }
+            
+            // Update user stats
+            const userStats = document.getElementById('userStats');
+            if (userStats) {
+                const days = Math.floor((new Date() - new Date(user.loginTime)) / (1000 * 60 * 60 * 24));
+                userStats.textContent = days === 0 ? 'First day on StudyMate!' : `Learning for ${days} day${days === 1 ? '' : 's'}`;
+            }
+            
+            // Update profile
+            document.getElementById('profileAvatar').textContent = user.fullName.charAt(0).toUpperCase();
+            document.getElementById('editableAvatar').textContent = user.fullName.charAt(0).toUpperCase();
+            document.getElementById('userFullName').textContent = user.fullName;
+            document.getElementById('userEmail').textContent = user.email;
+            document.getElementById('userEducation').textContent = user.userType.charAt(0).toUpperCase() + user.userType.slice(1);
+            
+            // Format member since date
+            const memberSince = document.getElementById('memberSince');
+            if (memberSince) {
+                const date = new Date(user.loginTime);
+                memberSince.textContent = date.toLocaleDateString('en-US', { 
+                    month: 'long', 
+                    day: 'numeric', 
+                    year: 'numeric' 
+                });
+            }
+            
+            // Update greeting in navbar
+            const userGreeting = document.getElementById('userGreeting');
+            if (userGreeting) {
+                userGreeting.innerHTML = `<a href="#edit-profile"><i class="fas fa-user"></i> Hi, ${user.fullName.split(' ')[0]}</a>`;
+            }
+            
+            // Update edit form
+            const names = user.fullName.split(' ');
+            document.getElementById('editFirstName').value = names[0] || '';
+            document.getElementById('editLastName').value = names.slice(1).join(' ') || '';
+            document.getElementById('editEmail').value = user.email;
+            document.getElementById('editUserType').value = user.userType || 'student';
+            document.getElementById('editEducationLevel').value = user.educationLevel || 'undergraduate';
+            document.getElementById('editBio').value = user.bio || '';
+            document.getElementById('editInterests').value = user.interests || '';
+        }
+        
+        // Load user data
+        function loadUserData() {
+            const currentUser = JSON.parse(localStorage.getItem('studymate_current_user') || 'null');
+            if (!currentUser) return;
+            
+            // Load user specific data
+            const userKey = `studymate_userdata_${currentUser.userId || currentUser.email}`;
+            const savedData = localStorage.getItem(userKey);
+            
+            if (savedData) {
+                Object.assign(userData, JSON.parse(savedData));
+            }
+        }
+        
+        // Save user data
+        function saveUserData() {
+            const currentUser = JSON.parse(localStorage.getItem('studymate_current_user') || 'null');
+            if (!currentUser) return;
+            
+            const userKey = `studymate_userdata_${currentUser.userId || currentUser.email}`;
+            localStorage.setItem(userKey, JSON.stringify(userData));
+        }
+        
+        // Load schedule data
+        function loadScheduleData() {
+            const scheduleGrid = document.getElementById('scheduleGrid');
+            if (!scheduleGrid) return;
+            
+            scheduleGrid.innerHTML = '';
+            
+            if (userData.schedule.length === 0) {
+                scheduleGrid.innerHTML = `
+                    <div class="no-schedule">
+                        <p>No schedule items yet. Click "Add Session" to create your first study session!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            userData.schedule.forEach((item, index) => {
+                const scheduleItem = document.createElement('div');
+                scheduleItem.className = 'schedule-item';
+                scheduleItem.innerHTML = `
+                    <h4>${item.title}</h4>
+                    <p>${item.description}</p>
+                    <div class="schedule-meta">
+                        <span><i class="far fa-calendar"></i> ${item.day}</span>
+                        <span><i class="far fa-clock"></i> ${item.time}</span>
+                    </div>
+                `;
+                scheduleGrid.appendChild(scheduleItem);
+            });
+        }
+        
+        // Load community data
+        function loadCommunityData() {
+            const groupsGrid = document.getElementById('groupsGrid');
+            if (!groupsGrid) return;
+            
+            groupsGrid.innerHTML = '';
+            
+            // Sample groups (in real app, these would come from server)
+            const sampleGroups = [
+                {
+                    id: 1,
+                    name: "Calculus Masters",
+                    subject: "mathematics",
+                    members: 24,
+                    description: "Study group for advanced calculus students preparing for finals."
+                },
+                {
+                    id: 2,
+                    name: "Computer Science Club",
+                    subject: "programming",
+                    members: 42,
+                    description: "Learn programming together and work on projects."
+                },
+                {
+                    id: 3,
+                    name: "Medical Students United",
+                    subject: "science",
+                    members: 18,
+                    description: "For medical students sharing study resources and tips."
+                },
+                {
+                    id: 4,
+                    name: "Language Exchange",
+                    subject: "languages",
+                    members: 56,
+                    description: "Practice different languages with native speakers."
+                }
+            ];
+            
+            sampleGroups.forEach(group => {
+                const groupCard = document.createElement('div');
+                groupCard.className = 'group-card';
+                groupCard.innerHTML = `
+                    <div class="group-header">
+                        <h4>${group.name}</h4>
+                        <div class="group-members">
+                            <i class="fas fa-users"></i>
+                            <span>${group.members} members</span>
+                        </div>
+                    </div>
+                    <div class="group-subject">${group.subject.charAt(0).toUpperCase() + group.subject.slice(1)}</div>
+                    <p class="group-description">${group.description}</p>
+                    <div class="group-actions">
+                        <button class="join-btn" onclick="joinGroup(${group.id})">
+                            <i class="fas fa-user-plus"></i> Join
+                        </button>
+                        <button class="view-btn" onclick="viewGroup(${group.id})">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                `;
+                groupsGrid.appendChild(groupCard);
+            });
+        }
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            // Add schedule item
+            const addScheduleBtn = document.getElementById('addScheduleItem');
+            if (addScheduleBtn) {
+                addScheduleBtn.addEventListener('click', addScheduleItem);
+            }
+            
+            // Create group form
+            const createGroupForm = document.getElementById('createGroupForm');
+            if (createGroupForm) {
+                createGroupForm.addEventListener('submit', createGroup);
+            }
+            
+            // Edit profile form
+            const editProfileForm = document.getElementById('editProfileForm');
+            if (editProfileForm) {
+                editProfileForm.addEventListener('submit', updateProfile);
+            }
+            
+            // Group search
+            const groupSearch = document.getElementById('groupSearch');
+            if (groupSearch) {
+                groupSearch.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        searchGroups();
+                    }
+                });
+            }
+        }
+        
+        // Add schedule item
+        function addScheduleItem() {
+            const title = prompt("Enter session title:");
+            if (!title) return;
+            
+            const description = prompt("Enter session description:");
+            const day = prompt("Enter day (e.g., Monday, Tuesday):");
+            const time = prompt("Enter time (e.g., 2:00 PM - 4:00 PM):");
+            
+            const newItem = {
+                id: Date.now(),
+                title: title,
+                description: description || "Study session",
+                day: day || "Today",
+                time: time || "1 hour"
+            };
+            
+            userData.schedule.push(newItem);
+            saveUserData();
+            loadScheduleData();
+            
+            showNotification('Study session added to schedule!', 'success');
+        }
+        
+        // Download template
+        function downloadTemplate(type) {
+            showNotification(`Downloading ${type.toUpperCase()} template...`, 'info');
+            
+            // Simulate download
+            setTimeout(() => {
+                showNotification('Template downloaded successfully!', 'success');
+            }, 1000);
+        }
+        
+        // Sync with calendar
+        function syncWithCalendar() {
+            showNotification('Syncing with Google Calendar...', 'info');
+            
+            // Simulate sync
+            setTimeout(() => {
+                showNotification('Calendar synced successfully!', 'success');
+            }, 1500);
+        }
+        
+        // Search groups
+        function searchGroups() {
+            const searchTerm = document.getElementById('groupSearch').value.toLowerCase();
+            showNotification(`Searching for "${searchTerm}"...`, 'info');
+            
+            // In a real app, this would filter groups
+            setTimeout(() => {
+                showNotification('Search completed!', 'success');
+            }, 500);
+        }
+        
+        // Join group
+        function joinGroup(groupId) {
+            showNotification('Joining study group...', 'info');
+            
+            setTimeout(() => {
+                showNotification('Successfully joined the study group!', 'success');
+            }, 1000);
+        }
+        
+        // View group
+        function viewGroup(groupId) {
+            showNotification('Opening group details...', 'info');
+            
+            setTimeout(() => {
+                // In real app, would navigate to group page
+                window.location.hash = '#community';
+            }, 500);
+        }
+        
+        // Create group
+        function createGroup(e) {
+            e.preventDefault();
+            
+            const groupName = document.getElementById('groupName').value;
+            const groupSubject = document.getElementById('groupSubject').value;
+            const groupDescription = document.getElementById('groupDescription').value;
+            const groupPrivacy = document.getElementById('groupPrivacy').value;
+            const groupMaxMembers = document.getElementById('groupMaxMembers').value;
+            
+            const newGroup = {
+                id: Date.now(),
+                name: groupName,
+                subject: groupSubject,
+                description: groupDescription,
+                privacy: groupPrivacy,
+                maxMembers: groupMaxMembers,
+                createdBy: JSON.parse(localStorage.getItem('studymate_current_user')).fullName,
+                createdAt: new Date().toISOString(),
+                members: 1
+            };
+            
+            userData.createdGroups.push(newGroup);
+            saveUserData();
+            
+            // Reset form
+            document.getElementById('createGroupForm').reset();
+            
+            showNotification('Study group created successfully!', 'success');
+            
+            // Switch back to find groups view
+            setTimeout(() => {
+                showCommunityView('findGroupsView');
+                window.location.hash = '#community';
+            }, 1500);
+        }
+        
+        // Update profile
+        function updateProfile(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('editFirstName').value;
+            const lastName = document.getElementById('editLastName').value;
+            const email = document.getElementById('editEmail').value;
+            const userType = document.getElementById('editUserType').value;
+            const educationLevel = document.getElementById('editEducationLevel').value;
+            const bio = document.getElementById('editBio').value;
+            const interests = document.getElementById('editInterests').value;
+            
+            const fullName = `${firstName} ${lastName}`;
+            
+            // Update current user in localStorage
+            const currentUser = JSON.parse(localStorage.getItem('studymate_current_user'));
+            currentUser.fullName = fullName;
+            currentUser.email = email;
+            currentUser.userType = userType;
+            currentUser.educationLevel = educationLevel;
+            currentUser.bio = bio;
+            currentUser.interests = interests;
+            
+            localStorage.setItem('studymate_current_user', JSON.stringify(currentUser));
+            
+            // Update UI
+            updateUserInfo(currentUser);
+            
+            showNotification('Profile updated successfully!', 'success');
+            
+            // Return to dashboard after delay
+            setTimeout(() => {
+                hideSection();
+            }, 1500);
+        }
+        
+        // Change avatar
+        function changeAvatar() {
+            const colors = ['#6c5ce7', '#00b894', '#fd79a8', '#fdcb6e', '#a29bfe', '#55efc4'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            document.getElementById('profileAvatar').style.background = randomColor;
+            document.getElementById('editableAvatar').style.background = randomColor;
+            
+            showNotification('Avatar color changed!', 'success');
+        }
+        
+        // Show notification
+        function showNotification(message, type) {
+            // Remove existing notifications
+            document.querySelectorAll('.notification').forEach(notification => {
+                notification.remove();
+            });
+            
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            // Add to document
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

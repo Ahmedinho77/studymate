@@ -1,0 +1,329 @@
+/* Study Tools Page Styles */
+.page-header {
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    color: white;
+    padding: 5rem 5%;
+    text-align: center;
+}
+
+.header-content h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.header-content p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.tools-intro {
+    padding: 4rem 5%;
+    background-color: white;
+}
+
+.tools-intro .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tools-intro h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: #2d3436;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.tools-intro p {
+    color: #636e72;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tools-categories {
+    padding: 4rem 5%;
+    background-color: #f8f9fa;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+}
+
+.category-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 2px solid transparent;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    border-color: #6c5ce7;
+    box-shadow: 0 15px 30px rgba(108, 92, 231, 0.1);
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.category-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.category-card h3 {
+    font-size: 1.5rem;
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+.category-card p {
+    color: #636e72;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.category-link {
+    color: #6c5ce7;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.3s ease;
+}
+
+.category-link:hover {
+    gap: 12px;
+}
+
+.featured-tools {
+    padding: 6rem 5%;
+    background-color: white;
+}
+
+.featured-tools.alt-bg {
+    background-color: #f8f9fa;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+}
+
+.tool-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+}
+
+.tool-image {
+    flex: 0 0 150px;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.tool-image i {
+    font-size: 3.5rem;
+}
+
+.tool-info {
+    flex: 1;
+    padding: 2rem;
+}
+
+.tool-info h3 {
+    font-size: 1.8rem;
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+.tool-info p {
+    color: #636e72;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.tool-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.tool-features span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2d3436;
+    font-weight: 500;
+}
+
+.tool-features i {
+    color: #00b894;
+}
+
+.tool-btn {
+    display: inline-block;
+    background-color: #6c5ce7;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.tool-btn:hover {
+    background-color: #5a4fcf;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+}
+
+.tool-comparison {
+    padding: 6rem 5%;
+}
+
+.comparison-table {
+    max-width: 1000px;
+    margin: 3rem auto 0;
+    overflow-x: auto;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.comparison-table th {
+    background-color: #6c5ce7;
+    color: white;
+    padding: 1.2rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.comparison-table td {
+    padding: 1.2rem;
+    border-bottom: 1px solid #e9ecef;
+    color: #2d3436;
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.comparison-table tr:hover {
+    background-color: #f0f2ff;
+}
+
+.cta-tools {
+    padding: 6rem 5%;
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    color: white;
+    text-align: center;
+}
+
+.cta-tools .cta-content h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.cta-tools .cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+/* Responsive Design for Study Tools */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tool-card {
+        flex-direction: column;
+    }
+    
+    .tool-image {
+        flex: 0 0 100px;
+    }
+    
+    .comparison-table {
+        font-size: 0.9rem;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.8rem;
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .tools-intro h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-tools .cta-content h2 {
+        font-size: 2rem;
+    }
+}
