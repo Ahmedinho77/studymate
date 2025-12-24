@@ -125,6 +125,7 @@
     min-height: 300px;
 }
 
+/* Study Time Distribution Chart */
 .chart-placeholder {
     display: flex;
     justify-content: space-around;
@@ -172,6 +173,7 @@
     border-radius: 3px;
 }
 
+/* Progress Over Time Chart */
 .line-chart-placeholder {
     height: 250px;
     display: flex;
@@ -488,10 +490,11 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    color: inherit;
 }
 
 .cta-btn.primary {
-    
+    background-color: white;
     color: #6c5ce7;
 }
 
@@ -514,211 +517,479 @@
     transform: translateY(-3px);
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+    transition: transform 0.3s;
+}
+
+.modal-overlay.active .modal {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    font-size: 24px;
+    color: #2d3436;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: #6c5ce7;
+}
+
+.progress-input-container {
+    margin-bottom: 25px;
+}
+
+.progress-input-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.progress-slider {
+    width: 100%;
+    margin: 15px 0;
+}
+
+.slider-value {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #6c5ce7;
+    margin-bottom: 10px;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    font-size: 14px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.modal-btn.primary {
+    background-color: #6c5ce7;
+    color: white;
+}
+
+.modal-btn.secondary {
+    background-color: #e9ecef;
+    color: #2d3436;
+}
+
+.modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================== */
+/* MOBILE VIEW FIXES - BOTH GRAPHS FIXED */
+/* =========================================== */
+
+@media (max-width: 768px) {
+    /* Mobile: Fix horizontal overflow in all sections */
+    .progress-overview,
+    .progress-charts,
+    .subject-breakdown,
+    .goals-section,
+    .cta-progress {
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    /* Mobile: Fix charts grid */
     .charts-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .chart-container {
+        padding: 1.5rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    
+    /* Mobile: Fix chart visual overflow for BOTH charts */
+    .chart-visual {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 15px;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* ========== FIX FOR "STUDY TIME DISTRIBUTION" GRAPH ========== */
+    .chart-placeholder {
+        min-width: 500px; /* Fixed width for horizontal scrolling */
+        width: auto;
+        padding: 1rem 20px;
+        margin: 0;
+        justify-content: flex-start;
+        gap: 20px;
+        height: 220px;
+    }
+    
+    .chart-bar {
+        flex-shrink: 0;
+        width: 35px;
+        margin: 0;
+    }
+    
+    /* Rotated labels for bar chart */
+    .bar-label {
+        position: absolute;
+        bottom: -35px;
+        left: 50%;
+        transform: translateX(-50%) rotate(-45deg);
+        transform-origin: left top;
+        font-size: 9px;
+        color: #636e72;
+        white-space: nowrap;
+        text-align: left;
+        width: 55px;
+        padding: 2px;
+        font-weight: 500;
+    }
+    
+    /* ========== FIX FOR "PROGRESS OVER TIME" GRAPH ========== */
+    .line-chart-placeholder {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        min-height: 280px;
+    }
+    
+    .line-chart {
+        min-width: 500px; /* Fixed width for horizontal scrolling */
+        width: auto;
+        height: 180px;
+        padding: 0 20px;
+        margin: 0;
+        justify-content: flex-start;
+        gap: 25px;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .line {
+        flex-shrink: 0;
+        width: 30px;
+        margin: 0;
+    }
+    
+    /* FIXED: Progress Over Time labels */
+    .line-chart-labels {
+        min-width: 500px;
+        width: auto;
+        padding: 0 20px;
+        margin-top: 0.5rem;
+        justify-content: flex-start;
+        gap: 25px;
+        display: flex;
+    }
+    
+    .line-chart-labels span {
+        flex-shrink: 0;
+        font-size: 9px;
+        color: #636e72;
+        text-align: center;
+        width: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        padding: 2px 0;
+        font-weight: 500;
+    }
+    
+    /* Mobile: Fix chart legend */
+    .chart-legend {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 3rem; /* Extra space for rotated labels */
+        padding: 0 15px;
+    }
+    
+    .legend-item {
+        font-size: 10px;
+        gap: 0.4rem;
+    }
+    
+    /* Mobile: Fix chart header */
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+    }
+    
+    .time-selector {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    /* Mobile: Fix other responsive issues */
+    .subjects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .subject-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .goals-container {
         grid-template-columns: 1fr;
         gap: 2rem;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .overview-stats,
-    .subjects-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .chart-container {
-        padding: 1.5rem;
-    }
-    
-    .chart-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-    
-    .time-selector {
-        align-self: flex-end;
+        width: 100%;
+        max-width: 100%;
     }
     
     .goal-item {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
+        width: 100%;
+        max-width: 100%;
     }
     
     .goal-btn {
-        align-self: flex-end;
-        background-color: #5a4fcf;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .progress-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+    
+    .subject-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .overview-stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .cta-buttons {
         flex-direction: column;
-        align-items: center;
+        width: 100%;
+        gap: 1rem;
     }
     
     .cta-btn {
         width: 100%;
-        max-width: 300px;
+        max-width: 100%;
+    }
+    
+    .modal {
+        width: 95%;
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .modal-btn {
+        width: 100%;
     }
 }
 
-@media (max-width: 576px) {
-    .progress-overview,
-    .progress-charts,
-    .subject-breakdown,
-    .goals-section,
-    .cta-progress {
-        padding: 3rem 5%;
+@media (max-width: 480px) {
+    /* Extra small mobile fixes */
+    
+    /* Smaller widths for both charts */
+    .chart-placeholder {
+        min-width: 400px;
+        gap: 15px;
+        padding: 1rem 15px;
     }
     
-    .stat-card,
-    .subject-card,
-    .chart-container {
-        padding: 1.5rem;
+    .chart-bar {
+        width: 30px;
     }
     
-    .chart-placeholder,
-    .line-chart-placeholder {
-        height: 200px;
+    .bar-label {
+        font-size: 8px;
+        bottom: -30px;
+        width: 45px;
+    }
+    
+    /* Progress Over Time chart fixes */
+    .line-chart {
+        min-width: 400px;
+        gap: 20px;
+        padding: 0 15px;
+    }
+    
+    .line {
+        width: 25px;
+    }
+    
+    .line-chart-labels {
+        min-width: 400px;
+        gap: 20px;
+        padding: 0 15px;
+    }
+    
+    .line-chart-labels span {
+        font-size: 8px;
+        width: 25px;
+    }
+    
+    /* Even smaller for very small screens */
+    @media (max-width: 400px) {
+        .chart-placeholder {
+            min-width: 350px;
+            gap: 12px;
+            padding: 1rem 10px;
+        }
+        
+        .chart-bar {
+            width: 25px;
+        }
+        
+        .bar-label {
+            font-size: 7px;
+            bottom: -28px;
+            width: 40px;
+        }
+        
+        .line-chart {
+            min-width: 350px;
+            gap: 18px;
+            padding: 0 10px;
+        }
+        
+        .line {
+            width: 22px;
+        }
+        
+        .line-chart-labels {
+            min-width: 350px;
+            gap: 18px;
+            padding: 0 10px;
+        }
+        
+        .line-chart-labels span {
+            font-size: 7px;
+            width: 22px;
+        }
     }
     
     .cta-progress .cta-content h2 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     
     .cta-progress .cta-content p {
         font-size: 1rem;
     }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .subject-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .subject-score {
+        font-size: 1.5rem;
+    }
+    
+    .chart-legend {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        margin-top: 2.5rem;
+    }
 }
-   .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal {
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            transform: translateY(-20px);
-            transition: transform 0.3s;
-        }
-
-        .modal-overlay.active .modal {
-            transform: translateY(0);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .modal-header h3 {
-            font-size: 24px;
-            color: var(--dark);
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #888;
-            transition: color 0.3s;
-        }
-
-        .close-modal:hover {
-            color: var(--primary);
-        }
-
-        .progress-input-container {
-            margin-bottom: 25px;
-        }
-
-        .progress-input-container label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #555;
-        }
-
-        .progress-slider {
-            width: 100%;
-            margin: 15px 0;
-        }
-
-        .slider-value {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .slider-labels {
-            display: flex;
-            justify-content: space-between;
-            color: #888;
-            font-size: 14px;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .modal-btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-        }
-
-        .modal-btn.primary {
-            background-color: var(--primary);
-            color: rgb(0, 0, 0);
-        }
-
-        .modal-btn.secondary {
-            background-color: var(--gray);
-            color: var(--dark);
-        }
-
-        .modal-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }

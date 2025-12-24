@@ -1,4 +1,4 @@
-// flashcards-demo.js
+// flashcards-demo.js - Updated with mobile fixes
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -94,15 +94,40 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize first card
     updateCard();
 
-    // Event Listeners
-    // Flip card on click
-    demoFlashcard.addEventListener('click', function() {
-        this.classList.toggle('flipped');
+    // Event Listeners - Fixed for mobile touch
+    // Flip card on click or touch
+    demoFlashcard.addEventListener('click', handleCardFlip);
+    demoFlashcard.addEventListener('touchstart', handleTouchStart, { passive: true });
+    demoFlashcard.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    function handleTouchStart(e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    }
+
+    function handleTouchEnd(e) {
+        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY = e.changedTouches[0].clientY;
+        
+        // Check if it's a tap (not a swipe)
+        const deltaX = Math.abs(touchEndX - touchStartX);
+        const deltaY = Math.abs(touchEndY - touchStartY);
+        
+        if (deltaX < 10 && deltaY < 10) {
+            handleCardFlip();
+        }
+    }
+
+    function handleCardFlip() {
+        demoFlashcard.classList.toggle('flipped');
         // Track study time
         stats.studyTime += 1;
         updateStats();
         saveStats();
-    });
+    }
 
     // Previous card
     prevCardBtn.addEventListener('click', function() {
@@ -121,6 +146,37 @@ document.addEventListener('DOMContentLoaded', function() {
             demoFlashcard.classList.remove('flipped');
         }
     });
+
+    // Swipe gestures for mobile
+    let cardStartX = 0;
+
+    demoFlashcard.addEventListener('touchstart', function(e) {
+        cardStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    demoFlashcard.addEventListener('touchend', function(e) {
+        const cardEndX = e.changedTouches[0].clientX;
+        const deltaX = cardEndX - cardStartX;
+        
+        // Swipe threshold (50px)
+        if (Math.abs(deltaX) > 50) {
+            if (deltaX > 0) {
+                // Swipe right - previous card
+                if (currentCardIndex > 0) {
+                    currentCardIndex--;
+                    updateCard();
+                    demoFlashcard.classList.remove('flipped');
+                }
+            } else {
+                // Swipe left - next card
+                if (currentCardIndex < flashcardData.length - 1) {
+                    currentCardIndex++;
+                    updateCard();
+                    demoFlashcard.classList.remove('flipped');
+                }
+            }
+        }
+    }, { passive: true });
 
     // Feedback buttons
     feedbackBtns.forEach(btn => {
@@ -156,6 +212,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }, 500);
         });
+        
+        // Add touch support for feedback buttons
+        btn.addEventListener('touchstart', function() {
+            this.classList.add('active');
+        }, { passive: true });
+        
+        btn.addEventListener('touchend', function() {
+            this.classList.remove('active');
+        }, { passive: true });
     });
 
     // Functions
@@ -169,14 +234,27 @@ document.addEventListener('DOMContentLoaded', function() {
         demoDifficulty.className = `difficulty ${card.difficulty}`;
         demoCardNumber.textContent = `Card ${currentCardIndex + 1}/${flashcardData.length}`;
         
-        // Update button states
-        prevCardBtn.disabled = currentCardIndex === 0;
-        nextCardBtn.disabled = currentCardIndex === flashcardData.length - 1;
-        
         // Update card example if available
         const exampleElement = document.querySelector('.example p');
         if (exampleElement && card.example) {
             exampleElement.textContent = card.example;
+        }
+        
+        // Update button states
+        prevCardBtn.disabled = currentCardIndex === 0;
+        nextCardBtn.disabled = currentCardIndex === flashcardData.length - 1;
+        
+        // Add visual feedback for mobile
+        if (prevCardBtn.disabled) {
+            prevCardBtn.style.opacity = '0.5';
+        } else {
+            prevCardBtn.style.opacity = '1';
+        }
+        
+        if (nextCardBtn.disabled) {
+            nextCardBtn.style.opacity = '0.5';
+        } else {
+            nextCardBtn.style.opacity = '1';
         }
     }
 
@@ -212,6 +290,14 @@ document.addEventListener('DOMContentLoaded', function() {
             <span>${message}</span>
         `;
         
+        // Position for mobile
+        if (window.innerWidth <= 768) {
+            notification.style.top = '10px';
+            notification.style.right = '10px';
+            notification.style.left = '10px';
+            notification.style.maxWidth = 'calc(100% - 20px)';
+        }
+        
         // Add to document
         document.body.appendChild(notification);
         
@@ -225,6 +311,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         }, 3000);
     }
+
+    // Prevent scrolling on card touch
+    demoFlashcard.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, { passive: false });
 
     // Auto-save stats every minute
     setInterval(saveStats, 60000);
