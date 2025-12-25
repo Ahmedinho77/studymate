@@ -1033,3 +1033,32 @@ footer {
         padding: 1rem;
     }
 }
+
+/* MOBILE TOUCH FIXES FOR ALL PAGES */
+@media (max-width: 768px) {
+    /* Make all interactive elements touch-friendly */
+    button, 
+    .btn, 
+    .control-btn, 
+    .feedback-btn,
+    .goal-btn,
+    .deck-action-btn,
+    .cta-btn,
+    .nav-btn {
+        min-height: 44px;
+        min-width: 44px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+    
+    /* Prevent text selection on interactive elements */
+    .flashcard,
+    .flashcard-front,
+    .flashcard-back {
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+}

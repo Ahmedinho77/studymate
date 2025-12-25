@@ -1,4 +1,4 @@
-// flashcards-demo.js - Updated with mobile touch fixes
+// flashcards-demo.js - SIMPLIFIED VERSION FOR MOBILE
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -94,90 +94,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize first card
     updateCard();
 
-    // Check if mobile device
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    
-    // Event Listeners - CRITICAL MOBILE FIXES
-    
-    // Mobile touch fix - use both click and touch events
-    if (isMobile) {
-        // For mobile - use touch events
-        demoFlashcard.addEventListener('touchstart', handleCardTap, { passive: true });
-        demoFlashcard.addEventListener('click', handleCardTap);
-        
-        // Prevent double-tap zoom on cards
-        demoFlashcard.addEventListener('touchstart', function(e) {
-            if (e.touches.length > 1) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-        
-        // Make buttons more touch-friendly
-        [prevCardBtn, nextCardBtn, ...feedbackBtns].forEach(btn => {
-            btn.style.minHeight = '44px';
-            btn.style.minWidth = '44px';
-        });
-    } else {
-        // For desktop - use click event
-        demoFlashcard.addEventListener('click', handleCardTap);
-    }
-    
-    // Prevent context menu on long press for mobile
-    demoFlashcard.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        return false;
-    });
-    
-    function handleCardTap(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        // Only flip if it's a simple tap (not a swipe)
-        if (isMobile) {
-            // For touch events, check if it's a tap (not a swipe)
-            if (e.type === 'touchstart') {
-                const touch = e.touches[0];
-                const startX = touch.clientX;
-                const startY = touch.clientY;
-                
-                demoFlashcard.addEventListener('touchend', function touchendHandler(e2) {
-                    const touchEnd = e2.changedTouches[0];
-                    const deltaX = Math.abs(touchEnd.clientX - startX);
-                    const deltaY = Math.abs(touchEnd.clientY - startY);
-                    
-                    // If movement is small, it's a tap
-                    if (deltaX < 10 && deltaY < 10) {
-                        flipCard();
-                    }
-                    
-                    demoFlashcard.removeEventListener('touchend', touchendHandler);
-                }, { passive: true });
-            } else {
-                flipCard();
-            }
-        } else {
-            flipCard();
-        }
+    // SIMPLE FLIPCARD FUNCTION - WORKS ON MOBILE
+    function flipCard() {
+        demoFlashcard.classList.toggle('flipped');
         
         // Track study time
         stats.studyTime += 1;
         updateStats();
         saveStats();
     }
+
+    // Add click event listener to the flashcard
+    demoFlashcard.addEventListener('click', flipCard);
     
-    function flipCard() {
-        demoFlashcard.classList.toggle('flipped');
-        
-        // Add animation class for visual feedback
-        demoFlashcard.classList.add('flipping');
-        setTimeout(() => {
-            demoFlashcard.classList.remove('flipping');
-        }, 600);
-    }
+    // Also add touch event for mobile
+    demoFlashcard.addEventListener('touchstart', function(e) {
+        // Prevent default to avoid double-tap zoom
+        e.preventDefault();
+        flipCard();
+    }, { passive: false });
 
     // Previous card
-    prevCardBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
+    prevCardBtn.addEventListener('click', function() {
         if (currentCardIndex > 0) {
             currentCardIndex--;
             updateCard();
@@ -186,8 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Next card
-    nextCardBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
+    nextCardBtn.addEventListener('click', function() {
         if (currentCardIndex < flashcardData.length - 1) {
             currentCardIndex++;
             updateCard();
@@ -195,63 +132,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Swipe gestures for mobile card navigation
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchEndX = 0;
-    let touchEndY = 0;
-    let isSwiping = false;
-
-    demoFlashcard.addEventListener('touchstart', function(e) {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-        isSwiping = false;
-    }, { passive: true });
-
-    demoFlashcard.addEventListener('touchmove', function(e) {
-        touchEndX = e.touches[0].clientX;
-        touchEndY = e.touches[0].clientY;
-        
-        const deltaX = Math.abs(touchEndX - touchStartX);
-        const deltaY = Math.abs(touchEndY - touchStartY);
-        
-        // If horizontal movement is significant and vertical movement is small, it's a swipe
-        if (deltaX > 30 && deltaY < 30) {
-            isSwiping = true;
-            e.preventDefault(); // Prevent scrolling when swiping horizontally
-        }
-    }, { passive: false });
-
-    demoFlashcard.addEventListener('touchend', function(e) {
-        if (!isSwiping) return;
-        
-        const deltaX = touchEndX - touchStartX;
-        
-        // Swipe threshold (50px)
-        if (Math.abs(deltaX) > 50) {
-            if (deltaX > 0) {
-                // Swipe right - previous card
-                if (currentCardIndex > 0) {
-                    currentCardIndex--;
-                    updateCard();
-                    demoFlashcard.classList.remove('flipped');
-                }
-            } else {
-                // Swipe left - next card
-                if (currentCardIndex < flashcardData.length - 1) {
-                    currentCardIndex++;
-                    updateCard();
-                    demoFlashcard.classList.remove('flipped');
-                }
-            }
-        }
-        isSwiping = false;
-    }, { passive: true });
-
     // Feedback buttons
     feedbackBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
+        btn.addEventListener('click', function() {
             const difficulty = this.getAttribute('data-difficulty');
             
             // Update stats
@@ -283,15 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }, 500);
         });
-        
-        // Add touch support for feedback buttons
-        btn.addEventListener('touchstart', function() {
-            this.classList.add('active');
-        }, { passive: true });
-        
-        btn.addEventListener('touchend', function() {
-            this.classList.remove('active');
-        }, { passive: true });
     });
 
     // Functions
@@ -305,32 +179,15 @@ document.addEventListener('DOMContentLoaded', function() {
         demoDifficulty.className = `difficulty ${card.difficulty}`;
         demoCardNumber.textContent = `Card ${currentCardIndex + 1}/${flashcardData.length}`;
         
-        // Update button states
-        prevCardBtn.disabled = currentCardIndex === 0;
-        nextCardBtn.disabled = currentCardIndex === flashcardData.length - 1;
-        
-        // Add visual feedback for mobile
-        if (prevCardBtn.disabled) {
-            prevCardBtn.style.opacity = '0.5';
-            prevCardBtn.style.cursor = 'not-allowed';
-        } else {
-            prevCardBtn.style.opacity = '1';
-            prevCardBtn.style.cursor = 'pointer';
-        }
-        
-        if (nextCardBtn.disabled) {
-            nextCardBtn.style.opacity = '0.5';
-            nextCardBtn.style.cursor = 'not-allowed';
-        } else {
-            nextCardBtn.style.opacity = '1';
-            nextCardBtn.style.cursor = 'pointer';
-        }
-        
         // Update card example if available
         const exampleElement = document.querySelector('.example p');
         if (exampleElement && card.example) {
             exampleElement.textContent = card.example;
         }
+        
+        // Update button states
+        prevCardBtn.disabled = currentCardIndex === 0;
+        nextCardBtn.disabled = currentCardIndex === flashcardData.length - 1;
     }
 
     function updateStats() {
@@ -364,14 +221,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
             <span>${message}</span>
         `;
-        
-        // Position for mobile
-        if (window.innerWidth <= 768) {
-            notification.style.top = '10px';
-            notification.style.right = '10px';
-            notification.style.left = '10px';
-            notification.style.maxWidth = 'calc(100% - 20px)';
-        }
         
         // Add to document
         document.body.appendChild(notification);
