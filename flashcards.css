@@ -45,7 +45,7 @@
     cursor: pointer;
     position: relative;
     -webkit-tap-highlight-color: transparent;
-    touch-action: pan-y; /* Changed from manipulation to allow vertical scroll */
+    touch-action: pan-y;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -66,9 +66,9 @@
     transition: transform 0.6s;
     top: 0;
     left: 0;
-    overflow-y: auto; /* Allow vertical scrolling */
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain; /* Prevent scroll chaining */
+    overscroll-behavior: contain;
 }
 
 .flashcard-front {
@@ -99,7 +99,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
-    flex-shrink: 0; /* Prevent header from shrinking */
+    flex-shrink: 0;
 }
 
 .subject-tag {
@@ -138,14 +138,14 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Changed from center to start for scrolling */
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
     position: relative;
     padding: 1rem 0;
-    overflow-y: auto; /* Make content scrollable */
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    min-height: 0; /* Important for flexbox scrolling */
+    min-height: 0;
 }
 
 .flashcard-content h3 {
@@ -153,7 +153,7 @@
     margin-bottom: 1rem;
     color: #2d3436;
     padding: 0 1rem;
-    flex-shrink: 0; /* Prevent heading from shrinking */
+    flex-shrink: 0;
 }
 
 .flashcard-back .flashcard-content h3 {
@@ -207,7 +207,7 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 1.5rem;
-    flex-shrink: 0; /* Prevent footer from shrinking */
+    flex-shrink: 0;
 }
 
 .card-number {
@@ -218,8 +218,6 @@
 .flashcard-back .card-number {
     color: rgba(255, 255, 255, 0.8);
 }
-
-/* Rest of the CSS remains the same... */
 
 /* Flashcard Controls */
 .flashcard-controls {
@@ -331,10 +329,779 @@
     color: #2d3436;
 }
 
-/* Rest of your existing CSS... */
+/* =========================================== */
+/* CREATE NEW FLASHCARD SECTION - RESTORED */
+/* =========================================== */
 
-/* Mobile Responsive Fixes */
+/* Flashcard Creator Section */
+.flashcard-creator-section {
+    padding: 4rem 5%;
+    background-color: white;
+}
+
+.flashcard-creator-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.flashcard-creator {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+    border: 2px solid #e9ecef;
+}
+
+.creator-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.creator-header h3 {
+    color: #2d3436;
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.creator-header p {
+    color: #636e72;
+}
+
+.creator-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #2d3436;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-group label i {
+    color: #6c5ce7;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.8rem 1rem;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #2d3436;
+    transition: border-color 0.3s ease;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #6c5ce7;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
+    min-height: 44px;
+    min-width: 120px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+}
+
+.btn-secondary {
+    background: white;
+    border: 2px solid #6c5ce7;
+    color: #6c5ce7;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
+    min-height: 44px;
+    min-width: 120px;
+}
+
+.btn-secondary:hover {
+    background: #6c5ce7;
+    color: white;
+}
+
+.preview-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.preview-section h4 {
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+#cardPreview {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 2px solid #e9ecef;
+    min-height: 200px;
+}
+
+.preview-card-content h5 {
+    color: #6c5ce7;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.preview-card-content p {
+    color: #2d3436;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    line-height: 1.5;
+}
+
+.preview-card-meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.preview-tag {
+    background: rgba(108, 92, 231, 0.1);
+    color: #6c5ce7;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* =========================================== */
+/* YOUR FLASHCARD DECKS SECTION - RESTORED */
+/* =========================================== */
+
+/* Your Decks Section */
+.your-decks {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e9ecef;
+    margin-top: 2rem;
+}
+
+.your-decks h3 {
+    color: #2d3436;
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.your-decks p {
+    color: #636e72;
+    margin-bottom: 2rem;
+}
+
+.decks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.user-deck-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.user-deck-card:hover {
+    border-color: #6c5ce7;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.1);
+}
+
+.deck-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.deck-title {
+    font-weight: 600;
+    color: #2d3436;
+    font-size: 1.1rem;
+}
+
+.deck-subject-badge {
+    background: #6c5ce7;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.deck-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    color: #636e72;
+    font-size: 0.9rem;
+}
+
+.deck-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.deck-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.deck-action-btn {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    background: white;
+    color: #2d3436;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    min-height: 36px;
+}
+
+.deck-action-btn:hover {
+    background: #6c5ce7;
+    color: white;
+    border-color: #6c5ce7;
+}
+
+.no-decks {
+    text-align: center;
+    padding: 3rem;
+    color: #636e72;
+    grid-column: 1 / -1;
+}
+
+.no-decks p {
+    margin-bottom: 1.5rem;
+}
+
+/* =========================================== */
+/* FLASHCARD FEATURES SECTION */
+/* =========================================== */
+
+.flashcards-features {
+    padding: 6rem 5%;
+    background-color: #f8f9fa;
+}
+
+.flashcards-features .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.flashcards-features .section-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+.flashcards-features .section-header p {
+    color: #636e72;
+    font-size: 1.1rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid #e9ecef;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #6c5ce7;
+    box-shadow: 0 10px 25px rgba(108, 92, 231, 0.1);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.feature-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: #636e72;
+    line-height: 1.6;
+}
+
+/* =========================================== */
+/* FLASHCARD TYPES SECTION */
+/* =========================================== */
+
+.flashcard-types {
+    padding: 6rem 5%;
+    background-color: white;
+}
+
+.flashcard-types .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.flashcard-types .section-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+.flashcard-types .section-header p {
+    color: #636e72;
+    font-size: 1.1rem;
+}
+
+.types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.type-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 2px solid #e9ecef;
+}
+
+.type-card:hover {
+    transform: translateY(-10px);
+    border-color: #6c5ce7;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.type-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.type-icon i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.type-card h3 {
+    font-size: 1.5rem;
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+.type-card p {
+    color: #636e72;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.type-features {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.type-features li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2d3436;
+}
+
+.type-features i {
+    color: #00b894;
+}
+
+/* =========================================== */
+/* POPULAR DECKS SECTION */
+/* =========================================== */
+
+.popular-decks {
+    padding: 6rem 5%;
+    background-color: #f8f9fa;
+}
+
+.popular-decks .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.popular-decks .section-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+.popular-decks .section-header p {
+    color: #636e72;
+    font-size: 1.1rem;
+}
+
+.decks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.deck-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.deck-card:hover {
+    border-color: #6c5ce7;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(108, 92, 231, 0.1);
+}
+
+.deck-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.deck-subject {
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.deck-subject.biology {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.deck-subject.language {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.deck-subject.chemistry {
+    background-color: #d6d8d9;
+    color: #383d41;
+}
+
+.deck-stats {
+    color: #636e72;
+    font-size: 0.9rem;
+}
+
+.deck-card h3 {
+    font-size: 1.3rem;
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+.deck-card p {
+    color: #636e72;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.deck-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.deck-author,
+.deck-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #636e72;
+    font-size: 0.9rem;
+}
+
+.deck-author i,
+.deck-rating i {
+    color: #6c5ce7;
+}
+
+.deck-rating i {
+    color: #ffc107;
+}
+
+.deck-btn {
+    display: block;
+    text-align: center;
+    background-color: #6c5ce7;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.deck-btn:hover {
+    background-color: #5a4fcf;
+}
+
+/* =========================================== */
+/* CTA SECTION */
+/* =========================================== */
+
+.cta-flashcards {
+    padding: 6rem 5%;
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    color: white;
+    text-align: center;
+}
+
+.cta-flashcards .cta-content h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.cta-flashcards .cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-btn a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: inherit;
+}
+
+.cta-btn.primary {
+    background-color: white;
+    color: #6c5ce7;
+}
+
+.cta-btn.primary:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn.secondary {
+    background-color: transparent;
+    border: 2px solid white;
+}
+
+.cta-btn.secondary a {
+    color: white;
+}
+
+.cta-btn.secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* =========================================== */
+/* NOTIFICATION STYLES */
+/* =========================================== */
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-weight: 500;
+    animation: slideIn 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 400px;
+}
+
+.notification.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.notification.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.notification.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+/* =========================================== */
+/* RESPONSIVE DESIGN */
+/* =========================================== */
+
+@media (max-width: 992px) {
+    .creator-form {
+        grid-template-columns: 1fr;
+    }
+    
+    .create-flashcards .container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
 @media (max-width: 768px) {
+    /* Flashcard fixes */
     .flashcard-container {
         padding: 1rem;
         min-height: 350px;
@@ -342,28 +1109,19 @@
     
     .flashcard {
         height: 350px;
-        touch-action: pan-y pinch-zoom; /* Allow vertical scroll and pinch zoom */
     }
     
     .flashcard-front,
     .flashcard-back {
         padding: 1.5rem;
-        touch-action: pan-y; /* Allow vertical scrolling inside card */
-    }
-    
-    .flashcard-content {
-        justify-content: flex-start; /* Ensure content starts at top */
-        padding: 0.5rem 0;
     }
     
     .flashcard-content h3 {
         font-size: 1.4rem;
-        margin-bottom: 0.8rem;
     }
     
     .answer {
         font-size: 1rem;
-        line-height: 1.5;
     }
     
     /* Mobile scroll indicator */
@@ -382,18 +1140,18 @@
         background: linear-gradient(to bottom, transparent, rgba(108, 92, 231, 0.9));
     }
     
-    /* Fix for iOS Safari */
-    @supports (-webkit-touch-callout: none) {
-        .flashcard {
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-        }
-        
-        .flashcard-content {
-            -webkit-overflow-scrolling: touch;
-        }
+    /* Create flashcard form */
+    .form-actions {
+        flex-direction: column;
     }
     
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Flashcard controls */
     .flashcard-controls {
         flex-direction: column;
         gap: 1rem;
@@ -402,10 +1160,40 @@
     .card-feedback {
         order: -1;
         margin-bottom: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .feedback-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+        flex: 1;
     }
 
     .flashcard-stats {
         grid-template-columns: 1fr;
+    }
+
+    /* Grid layouts */
+    .types-grid,
+    .decks-grid,
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .decks-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* CTA buttons */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
     }
 }
 
@@ -434,4 +1222,33 @@
         font-size: 0.8rem;
         padding: 0.2rem 0.8rem;
     }
+    
+    /* Form elements */
+    .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Deck cards */
+    .deck-actions {
+        flex-direction: column;
+    }
+    
+    .deck-action-btn {
+        width: 100%;
+    }
+}
+
+/* Demo Instructions */
+.demo-instructions {
+    text-align: center;
+    margin: 1rem 0 2rem;
+    color: #6c5ce7;
+    font-weight: 600;
 }
